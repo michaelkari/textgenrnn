@@ -229,7 +229,7 @@ class textgenrnn:
                                                       context_size=context_labels.shape[1],
                                                       weights_path=weights_path)
                     parallel_model.compile(loss='categorical_crossentropy',
-                                           optimizer=tf.keras.optimizers.legacy.Adam(lr=4e-3))
+                                           optimizer=Adam(lr=4e-3))
                 model_t = parallel_model
                 print("Training on {} GPUs.".format(num_gpus))
             else:
@@ -249,7 +249,7 @@ class textgenrnn:
                                                       cfg=self.config,
                                                       weights_path=weights_path)
                     parallel_model.compile(loss='categorical_crossentropy',
-                                           optimizer=tf.keras.optimizers.legacy.Adam(lr=4e-3))
+                                           optimizer=Adam(lr=4e-3))
 
                 model_t = parallel_model
                 print("Training on {} GPUs.".format(num_gpus))
