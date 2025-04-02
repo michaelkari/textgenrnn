@@ -162,7 +162,7 @@ class textgenrnn:
             len(text) + 1)) for i, text in enumerate(texts)]
         # indices_list = np.block(indices_list) # this hangs when indices_list is large enough
         # FIX BEGIN ------
-        indices_list_o = np.block(indices_list[0])
+        indices_list_o = np.block(list(indices_list[0]))
         for i in range(len(indices_list)-1):
             tmp = np.block(indices_list[i+1])
             indices_list_o = np.concatenate([indices_list_o, tmp])
