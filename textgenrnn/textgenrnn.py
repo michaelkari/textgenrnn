@@ -59,10 +59,10 @@ class textgenrnn:
         if allow_growth is not None:
             physical_devices = tf.config.experimental.list_physical_devices('GPU')
             if physical_devices:
-                try:
-                    tf.config.experimental.set_memory_growth(physical_devices[0], allow_growth)
-                except RuntimeError as e:
-                    print(e)
+                 try:
+                     tf.config.experimental.set_memory_growth(physical_devices[0], allow_growth)
+                 except RuntimeError as e:
+                     print(e)
 
         if config_path is not None:
             with open(config_path, 'r',
