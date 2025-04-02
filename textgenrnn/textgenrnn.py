@@ -10,7 +10,7 @@ from sklearn.manifold import TSNE
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import LabelBinarizer
 from tensorflow import config as config
-from tensorflow.compat.v1.keras.backend import set_session
+from tensorflow.keras import backend as K
 from tensorflow.keras.callbacks import LearningRateScheduler
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
@@ -57,9 +57,12 @@ class textgenrnn:
                                            'textgenrnn_vocab.json')
 
         if allow_growth is not None:
-            c = tf.compat.v1.ConfigProto()
-            c.gpu_options.allow_growth = True
-            set_session(tf.compat.v1.Session(config=c))
+            physical_devices = tf.config.experimental.list_physical_devices('GPU')
+            if physical_devices:
+                try:
+                    tf.config.experimental.set_memory_growth(physical_devices[0], allow_growth)
+                except RuntimeError as e:
+                    print(e)
 
         if config_path is not None:
             with open(config_path, 'r',
