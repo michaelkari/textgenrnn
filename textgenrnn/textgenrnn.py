@@ -218,7 +218,7 @@ class textgenrnn:
             if new_model:
                 weights_path = None
             else:
-                weights_path = "{}_weights.hdf5".format(self.config['name'])
+                weights_path = "{}.weights.h5".format(self.config['name'])
                 self.save(weights_path)
 
 
@@ -243,7 +243,7 @@ class textgenrnn:
                 if new_model:
                     weights_path = None
                 else:
-                    weights_path = "{}_weights.hdf5".format(self.config['name'])
+                    weights_path = "{}.weights.h5".format(self.config['name'])
 
                 strategy = distribute.MirroredStrategy()
                 with strategy.scope():
@@ -339,7 +339,7 @@ class textgenrnn:
                             multi_gpu=multi_gpu,
                             **kwargs)
 
-    def save(self, weights_path="textgenrnn_weights_saved.hdf5"):
+    def save(self, weights_path="textgenrnn_saved.weights.h5"):
         self.model.save_weights(weights_path)
 
     def load(self, weights_path):
