@@ -50,7 +50,7 @@ class textgenrnn:
 
         if weights_path is None:
             weights_path = resource_filename(__name__,
-                                             'textgenrnn_weights.hdf5')
+                                             'textgenrnn.weights.h5')
 
         if vocab_path is None:
             vocab_path = resource_filename(__name__,
