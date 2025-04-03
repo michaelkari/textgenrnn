@@ -10,6 +10,7 @@ __pycache__
 *.pyc
 test.py
 *.hdf5
+!/textgenrnn/textgenrnn.weights.h5
 *vocab.json
 *config.json
 /venv/
